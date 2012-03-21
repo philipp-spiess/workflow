@@ -50,6 +50,7 @@ namespace Workflow
 
             this.todoList.Items.Clear();
             foreach( ArbeitsAuftrag aa in work_orders ) {
+                Console.WriteLine(aa.Uebergabedaten.ID);
                 this.todoList.Items.Add(aa);
             }
 
@@ -77,5 +78,6 @@ namespace Workflow
                 StartCtrl.Weiterfuehren(aa);
             }
         }
+
     }
 }

@@ -25,9 +25,5 @@ namespace Program2
             label1.Text = Uebergabedaten.GetDaten<String>();
         }
 
-        private void GUI_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Programm2.Save(Uebergabedaten);
-        }
     }
 }

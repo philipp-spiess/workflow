@@ -24,13 +24,5 @@ namespace Program2
             gui.Programm2 = this;
             gui.Show();
         }
-
-        public void Save(Uebergabedaten u)
-        {
-            StartCtrl.Save(u);
-        }
-
-
-
     }
 }

@@ -11,7 +11,7 @@ namespace ProgramLib
     {
         public Typ Typ { get; set; }
         public int ID { get; set; }
-        private String Daten;
+        public String Daten { get; set; }
 
         public Uebergabedaten(int ID, Typ t, String d)
         {

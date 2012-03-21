@@ -59,7 +59,6 @@
             this.Controls.Add(this.button1);
             this.Name = "GUI";
             this.Text = "GUI - Programm 2";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GUI_FormClosing);
             this.Load += new System.EventHandler(this.GUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

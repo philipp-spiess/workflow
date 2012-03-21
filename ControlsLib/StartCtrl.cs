@@ -20,9 +20,11 @@ namespace ControlsLib
 
         public static void Weiterfuehren(ArbeitsAuftrag aa)
         {
-            Persistence.RemoveArbeitsAuftrag(aa);
             aa.program.uebergabedaten = aa.Uebergabedaten;
             aa.program.Start();
+
+
+            Persistence.RemoveArbeitsAuftrag(aa);
         }
 
         public static void Save(Uebergabedaten u)

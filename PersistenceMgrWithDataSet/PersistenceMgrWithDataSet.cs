@@ -11,7 +11,6 @@ namespace PersistenceMgrWithDataSet
 {
     public class PersistenceMgrWithDataSet : IPersistenceMgr
     {
-        // private List<ArbeitsAuftrag> work_orders = new List<ArbeitsAuftrag>();
         private DBHelper DB = new DBHelper();
         private String stdPath = @"..\..\..\";
 
@@ -62,13 +61,22 @@ namespace PersistenceMgrWithDataSet
 
             foreach (DataRow row in DB.Set.Tables["daten"].Rows)
             {
-                Typ t = null;
+                try
+                {
 
-                foreach (Typ typ in typen)
-                    if (typ.Name.Equals(row["typ_tname"]))
-                        t = typ;
+                    Typ t = null;
+                    foreach (Typ typ in typen)
+                        if (typ.Name.Equals(row["typ_tname"]))
+                            t = typ;
 
-                Uebergabedaten u = new Uebergabedaten((int) row["did"], t, (String) row["data"]);
+                    int did = int.Parse(row["did"].ToString());
+                    String data = (String)row["data"];
+
+                    Uebergabedaten u = new Uebergabedaten(did, t, data);
+
+                    uebergabedaten.Add(u);
+                }
+                catch (DeletedRowInaccessibleException ignore) { }
             }
 
             return uebergabedaten;
@@ -76,11 +84,12 @@ namespace PersistenceMgrWithDataSet
 
         private List<Program> GetAllProgramme()
         {
+            Console.WriteLine("get all the programs");
+
             List<Typ> typen = this.GetTyps();
             List<Program> programme = new List<Program>();
             foreach (DataRow row in DB.Set.Tables["programm"].Rows)
-            {   
-
+            {
                 ObjectHandle h = Activator.CreateInstanceFrom(
                     stdPath + row["path"],
                     (String)row["type"]
@@ -119,18 +128,23 @@ namespace PersistenceMgrWithDataSet
 
             foreach (DataRow row in DB.Set.Tables["AA"].Rows)
             {
-                Program p = null;
-                Uebergabedaten u = null;
+                try
+                {
 
-                foreach(Program pro in programs)
-                    if(pro.Name.Equals(row["programm_pname"]))
-                        p = pro;
+                    Program p = null;
+                    Uebergabedaten u = null;
 
-                foreach(Uebergabedaten ueb in uebergabedaten)
-                    if(u.ID == (int) row["daten_did"])
-                        u = ueb;
+                    foreach (Program pro in programs)
+                        if (pro.Name.Equals(row["programm_pname"]))
+                            p = pro;
 
-                arbeitsauftrage.Add( new ArbeitsAuftrag(p, u) );
+                    foreach (Uebergabedaten ueb in uebergabedaten)
+                        if (ueb.ID == int.Parse(row["daten_did"].ToString()))
+                            u = ueb;
+
+                    arbeitsauftrage.Add(new ArbeitsAuftrag(p, u));
+                }
+                catch (DeletedRowInaccessibleException ignore) { }
             }
 
             return arbeitsauftrage;
@@ -138,12 +152,41 @@ namespace PersistenceMgrWithDataSet
 
         public void AddArbeitsAuftrag(ArbeitsAuftrag aa) 
         {
-            this.work_orders.Add(aa);
+            if( aa.Uebergabedaten.ID <= 0 )
+                aa.Uebergabedaten.ID = DB.getDatenID();
+
+            DataRow daten_row = DB.Set.Tables["daten"].NewRow();
+            DataRow aa_row = DB.Set.Tables["AA"].NewRow();
+
+            daten_row["did"] = aa.Uebergabedaten.ID;
+            daten_row["typ_tname"] = aa.Uebergabedaten.Typ.Name;
+            daten_row["data"] = aa.Uebergabedaten.Daten;
+
+            aa_row["programm_pname"] = aa.program.Name;
+            aa_row["daten_did"] = aa.Uebergabedaten.ID;
+
+            DB.Set.Tables["daten"].Rows.Add(daten_row);
+            DB.Set.Tables["AA"].Rows.Add(aa_row);
         }
 
         public void RemoveArbeitsAuftrag(ArbeitsAuftrag aa)
         {
-            this.work_orders.Remove(aa);
+            int id = aa.Uebergabedaten.ID;
+
+            DataRow deleteMe = null;
+
+            foreach (DataRow row in DB.Set.Tables["AA"].Rows)
+                if (int.Parse(row["daten_did"].ToString()) == id)
+                    deleteMe = row;
+
+            deleteMe.Delete();
+
+            foreach (DataRow row in DB.Set.Tables["daten"].Rows)
+                if (int.Parse(row["did"].ToString()) == id)
+                    deleteMe = row;
+
+            deleteMe.Delete();
+
         }
     }
 }
