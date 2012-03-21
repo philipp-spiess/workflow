@@ -28,7 +28,7 @@ CREATE TABLE "DATEN"
 (
   did integer,
   typ_tname varchar2(50),
-  data clob 
+  data varchar2(1024) 
 );
 
 CREATE SEQUENCE daten_seq;

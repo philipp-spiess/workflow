@@ -24,10 +24,13 @@ namespace ControlsLib
                      * Reflection
                      **/
 
+                    AppSettingsReader config = new AppSettingsReader();
+
+                    String persistence_mgr = (String)config.GetValue("PersistenceMgr", typeof(String));
 
                     ObjectHandle h = Activator.CreateInstanceFrom(
-                        @"..\..\..\PersistenceMgrWithDataSet\bin\Debug\PersistenceMgrWithDataSet.dll",
-                        @"PersistenceMgrWithDataSet.GetInstance"
+                        @"..\..\..\" + persistence_mgr + @"\bin\Debug\" + persistence_mgr + @".dll",
+                        persistence_mgr + @".GetInstance"
                     );
                     IGetInstence instence_getter = (IGetInstence) h.Unwrap();
 

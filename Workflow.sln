@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program3", "Program3\Progra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistenceMgrWithDataSet", "PersistenceMgrWithDataSet\PersistenceMgrWithDataSet.csproj", "{5AB3630C-309F-4CF7-A3E4-C04F0D861F13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistenceMgrWithoutDataSet", "PersistenceMgrWithoutDataSet\PersistenceMgrWithoutDataSet.csproj", "{1CBD3B9E-D271-4B24-9CE9-893E6C4EC9FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,16 @@ Global
 		{5AB3630C-309F-4CF7-A3E4-C04F0D861F13}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5AB3630C-309F-4CF7-A3E4-C04F0D861F13}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5AB3630C-309F-4CF7-A3E4-C04F0D861F13}.Release|x86.ActiveCfg = Release|Any CPU
+		{1CBD3B9E-D271-4B24-9CE9-893E6C4EC9FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CBD3B9E-D271-4B24-9CE9-893E6C4EC9FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CBD3B9E-D271-4B24-9CE9-893E6C4EC9FC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1CBD3B9E-D271-4B24-9CE9-893E6C4EC9FC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1CBD3B9E-D271-4B24-9CE9-893E6C4EC9FC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1CBD3B9E-D271-4B24-9CE9-893E6C4EC9FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CBD3B9E-D271-4B24-9CE9-893E6C4EC9FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CBD3B9E-D271-4B24-9CE9-893E6C4EC9FC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1CBD3B9E-D271-4B24-9CE9-893E6C4EC9FC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1CBD3B9E-D271-4B24-9CE9-893E6C4EC9FC}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
