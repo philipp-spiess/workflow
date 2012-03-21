@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program1", "Program1\Progra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program2", "Program2\Program2.csproj", "{C18CBF30-87D5-42A1-8F41-B159BB036FD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program3", "Programm3\Program3.csproj", "{EF18B641-B43B-4590-AD62-E07B875DE0B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program3", "Program3\Program3.csproj", "{EF18B641-B43B-4590-AD62-E07B875DE0B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistenceMgrWithDataSet", "PersistenceMgrWithDataSet\PersistenceMgrWithDataSet.csproj", "{5AB3630C-309F-4CF7-A3E4-C04F0D861F13}"
 EndProject
