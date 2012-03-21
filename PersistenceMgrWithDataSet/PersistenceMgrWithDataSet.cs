@@ -65,7 +65,7 @@ namespace PersistenceMgrWithDataSet
                 Typ t = null;
 
                 foreach (Typ typ in typen)
-                    if (typ.Name.Equals(row["typ_name"]))
+                    if (typ.Name.Equals(row["typ_tname"]))
                         t = typ;
 
                 Uebergabedaten u = new Uebergabedaten((int) row["did"], t, (String) row["data"]);
